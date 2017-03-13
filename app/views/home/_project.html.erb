@@ -1,0 +1,38 @@
+<div id="project_errors"></div>
+
+<div id="project_detail"></div>
+
+<% current_user.projects.each do |project| %>
+
+<div id="project_detail_<%= project.id %>">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+        <strong>Name:</strong>
+        <%= project.name %>
+    </p>
+
+    <p>
+        <strong>Description:</strong>
+        <%= project.description %>
+    </p>
+
+    <p>
+        <strong>Url:</strong>
+        <%= project.url %>
+    </p>
+
+    <p>
+        <strong>Start date:</strong>
+        <%= project.start_date %>
+    </p>
+
+    <p>
+        <strong>End date:</strong>
+        <%= project.end_date %>
+    </p>
+    <%= link_to "remove", project_path(project), method: :delete, data: {confirm: "Are you sure?"}, id: "project_#{project.id}", remote: true %>
+</div>
+<% end %>
+
+<%= link_to "Create_Project", new_project_path, id: "project", remote: true  %><br/>

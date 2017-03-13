@@ -1,0 +1,61 @@
+/* Settings reseters */
+.lx-mb-0{
+	margin-bottom:0px;
+}
+@media(max-width:768px){
+	.lx-mb-0{
+		margin-bottom:60px;
+	}
+}
+.lx-mb-00{
+	margin-bottom:0px;
+}
+@media(max-width:768px){
+	.lx-mb-00{
+		margin-bottom:0px;
+	}
+}
+.lx-mb-10{
+	margin-bottom:10px;
+}
+.lx-mlr-50{
+	margin:30px 100px;
+}
+@media(max-width:1024px){
+	.lx-mlr-50{
+		margin:30px 80px;
+	}
+}
+@media(max-width:768px){
+	.lx-mlr-50{
+		margin:0px;
+	}
+}
+.lx-pl-30{
+	padding-left:30px;
+}
+.lx-pr-30{
+	padding-right:30px;
+}
+@media(max-width:768px){
+	.lx-pl-30{
+		padding-left:0px;
+	}
+	.lx-pr-30{
+		padding-right:0px;
+	}
+}
+.lx-bg-gray{
+	background:#F8F8F8;
+}
+.lx-posr{
+	position:static;
+}
+@media(max-width:768px){
+	.lx-posr{
+		position:relative;
+	}
+}
+.lx-fr{
+	float:right;
+}

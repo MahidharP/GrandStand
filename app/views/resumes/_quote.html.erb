@@ -1,0 +1,235 @@
+<style type="text/css">
+    #carousel {
+        position: relative;
+        width: 100%;
+        margin: -70px auto;
+    }
+
+    #slides {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 230px;
+    }
+
+    #slides ul {
+        list-style: none;
+        width: 100%;
+        height: 250px;
+        margin: 10px;
+        padding: 0;
+        position: relative;
+    }
+
+    #slides li {
+        width: 100%;
+        height: 250px;
+        float: left;
+        text-align: left;
+        position: relative;
+        font-family: 'PT Sans';
+    }
+
+    /* Styling for prev and next buttons */
+
+    .btn-bar {
+        width: 60%;
+        margin: 0 auto;
+        display: block;
+        position: relative;
+        top: 40px;
+    }
+
+    #buttons {
+        padding: 0 0 5px;
+        float: right;
+    }
+
+    #buttons a {
+        text-align: center;
+        display: block;
+        font-size: 30px;
+        float: left;
+        outline: 10px;
+        margin: 20px;
+        color: #fc7;
+        text-decoration: none;
+        padding: 10px;
+        #earlier it was 9 width: 35px;
+    }
+    a#next:hover,
+    a#prev:hover {
+        color: #FFF;
+
+    }
+
+    .quote-author,
+    .quote-phrase {
+        font-weight: 150;
+        display: block;
+        width: 100%;
+        vertical-align: middle;
+        position: relative;
+        padding: 5px 20px;
+        font-family: 'PT Sans';
+    }
+
+    .quote-phrase {
+        height: 100px;
+        font-size: 16px;
+        color: #626262;
+        font-family: 'PT Sans';
+        display: block;
+        font-style: normal;
+        line-height: 28px;
+        position: relative;
+        /*text-align: left;*/
+
+    }
+
+    .quote-marks {
+        border-top: 2px solid #424242;
+        border-left: 2px solid #424242;
+        /*font-size: 30px;
+        padding: 0 3px 3px;*/
+        position: absolute;
+    }
+
+    .quote-author {
+        font-style: normal;
+        font-size: 16px;
+        text-align: right;
+        display: block;
+        margin-top: 10px;
+        color: #999999;
+        font-weight: 400;
+        height: 30px;
+    }
+
+    .authorContainer,
+    .quoteContainer {
+        display: table;
+        width: 100%;
+    }
+
+</style>
+
+<div id="jquery-script-menu"></div>
+
+<div id="carousel">
+    <div class="btn-bar">
+        <div id="buttons">
+            <a id="prev" href="#"><</a><a id="next" href="#">></a>
+        </div>
+    </div>
+    <div id="slides">
+        <ul>
+            <% current_user.quotes.each do |quote| %>
+            <li class="slide">
+                <div class="quoteContainer">
+                    <p class="quote-phrase">
+                        <i class="fa fa-quote-left"></i>&nbsp;
+                        <%= quote.name %>
+                        &nbsp;<i class="fa fa-quote-right"></i>
+                    </p>
+                </div>
+                <div class="authorContainer">
+                    <em>
+                        <p class="quote-author"><%= quote.quote_by %></p>
+                    </em>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //rotation speed and timer
+        var speed = 4000;
+
+        var run = setInterval(rotate, speed);
+        var slides = $('.slide');
+        var container = $('#slides ul');
+        var elm = container.find(':first-child').prop("tagName");
+        var item_width = container.width();
+        var previous = 'prev'; //id of previous button
+        var next = 'next'; //id of next button
+        slides.width(item_width); //set the slides to the correct pixel width
+        container.parent().width(item_width);
+        container.width(slides.length * item_width); //set the slides container to the correct total width
+        container.find(elm + ':first').before(container.find(elm + ':last'));
+        resetSlides();
+
+        //if user clicked on prev button
+
+        $('#buttons a').click(function (e) {
+            //slide the item
+
+            if (container.is(':animated')) {
+                return false;
+            }
+            if (e.target.id == previous) {
+                container.stop().animate({
+                    'left': 0
+                }, 1500, function () {
+                    container.find(elm + ':first').before(container.find(elm + ':last'));
+                    resetSlides();
+                });
+            }
+
+            if (e.target.id == next) {
+                container.stop().animate({
+                    'left': item_width * -2
+                }, 1500, function () {
+                    container.find(elm + ':last').after(container.find(elm + ':first'));
+                    resetSlides();
+                });
+            }
+
+            //cancel the link behavior
+            return false;
+
+        });
+
+        //if mouse hover, pause the auto rotation, otherwise rotate it
+        container.parent().mouseenter(function () {
+            clearInterval(run);
+        }).mouseleave(function () {
+            run = setInterval(rotate, speed);
+        });
+
+        function resetSlides() {
+            //and adjust the container so current is in the frame
+            container.css({
+                'left': -1 * item_width
+            });
+        }
+
+    });
+    //a simple function to click next link a timer will call this function, and the rotation will begin
+
+    function rotate() {
+        $('#next').click();
+    }
+</script>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol
+            ? 'https://ssl'
+            : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>

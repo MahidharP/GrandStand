@@ -1,0 +1,8 @@
+<% if @personal_info.errors.any? %>
+      $("#new_personal_info").hide();
+      $("#personal_info_errors").html("<%= j render('form') %>");
+<% else %>
+  $("#new_personal_info").hide();
+  $("#personal_info").show();
+  $("#personal_info_detail").html("<b>Profile : <%= @personal_info.profile %></b><br/><b>Designation : <%= @personal_info.designation %></b>");
+<% end %>

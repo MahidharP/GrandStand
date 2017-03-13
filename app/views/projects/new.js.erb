@@ -1,0 +1,5 @@
+<% if @project.errors.any? %>
+  $("project_errors").html("<h2>Errors</h2>");
+<% else %>
+$("#project").hide().after("<%= j render('form')%>");
+<% end %>

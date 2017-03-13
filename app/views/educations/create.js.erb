@@ -1,0 +1,8 @@
+<% if @education.errors.any? %>
+      $("#new_education").hide();
+      $("#education_errors").html("<%= j render('form') %>");
+<% else %>
+  $("#new_education").hide();
+  $("#education").show();
+  $("#education_detail").html("<b>Name : <%= @education.name %></b><br/><b>College : <%= @education.college %></b>");
+<% end %>

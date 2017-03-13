@@ -1,0 +1,9 @@
+development:
+  cloud_name: "dct-grandstand"
+  api_key: "142239276755692"
+  api_secret: "fbGrCHobb5ISSgfNroVmfIGcmGg"
+
+production:
+  cloud_name: "dct-grandstand"
+  api_key: "142239276755692"
+  api_secret: "fbGrCHobb5ISSgfNroVmfIGcmGg"

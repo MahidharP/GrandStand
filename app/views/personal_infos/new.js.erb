@@ -1,0 +1,5 @@
+<% if @personal_info.errors.any? %>
+  $("personal_info_errors").html("<h2>Errors</h2>");
+<% else %>
+$("#personal_info").hide().after("<%= j render('form')%>");
+<% end %>

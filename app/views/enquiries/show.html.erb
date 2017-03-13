@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <strong>Name:</strong>
+    <%= @enquiry.try(:name) %>
+</p>
+
+<p>
+    <strong>Email:</strong>
+    <%= @enquiry.try(:email) %>
+</p>
+
+<p>
+    <strong>Message:</strong>
+    <%= @enquiry.try(:message) %>
+</p>
+
+<%= link_to 'Edit', edit_enquiry_path(@enquiry) %>
+|
+<%= link_to 'Back', enquiries_path %>

@@ -1,0 +1,34 @@
+<div id="contact_errors"></div>
+
+<div id="contact_detail"></div>
+
+<% current_user.contacts.each do |contact| %>
+
+<div id="contact_detail_<%= contact.id %>">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+        <strong>Mobile:</strong>
+        <%= contact.mobile %>
+    </p>
+
+    <p>
+        <strong>Email:</strong>
+        <%= contact.email %>
+    </p>
+
+    <p>
+        <strong>Website:</strong>
+        <%= contact.website %>
+    </p>
+
+    <p>
+        <strong>Address:</strong>
+        <%= contact.address %>
+    </p>
+
+    <%= link_to "remove", contact_path(contact), method: :delete, data: {confirm: "Are you sure?"}, id: "contact_#{contact.id}", remote: true %>
+</div>
+<% end %>
+
+<%= link_to "Create Contact", new_contact_path, id: "contact", remote: true  %><br/>

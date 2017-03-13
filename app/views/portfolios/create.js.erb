@@ -1,0 +1,8 @@
+<% if @portfolio.errors.any? %>
+      $("#new_portfolio").hide();
+      $("#portfolio_errors").html("<%= j render('form') %>");
+<% else %>
+  $("#new_portfolio").hide();
+  $("#portfolio").show();
+  $("#portfolio_detail").html("<b>Title : <%= @portfolio.title %></b><br/><b>Description : <%= @portfolio.description %></b>");
+<% end %>

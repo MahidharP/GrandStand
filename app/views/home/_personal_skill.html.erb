@@ -1,0 +1,16 @@
+<div id="personal_skill_errors"></div>
+
+<div id="personal_skill_detail"></div>
+<% @user.user_personal_skills.each do |personal_skill| %>
+<div id="personal_skill_detail_<%= personal_skill.id %>">
+    <p id="notice"><%= notice %></p>
+    <p>
+        <strong>Name:</strong>
+        <%= personal_skill.personal_skill.name %>
+    </p>
+
+    <%= link_to "remove", personal_skill_path(personal_skill), method: :delete, data: {confirm: "Are you sure?"}, id: "personal_skill_#{personal_skill.id}", remote: true %>
+</div>
+<% end %>
+
+<%= link_to "My Personal Interest", new_personal_skill_path, id: "personal_skill", remote: true %><br/>

@@ -1,0 +1,8 @@
+<% if @interest.errors.any? %>
+      $("#new_interest").hide();
+      $("#interest_errors").html("<%= j render('form') %>");
+<% else %>
+  $("#new_interest").hide();
+  $("#interest").show();
+  $("#interest_detail").html("<b>Name : <%= @interest.name %></b>");
+<% end %>

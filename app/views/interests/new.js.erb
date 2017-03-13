@@ -1,0 +1,5 @@
+<% if @interest.errors.any? %>
+  $("interest_errors").html("<h2>Errors</h2>")
+<% else %>
+$("#interest").hide().after("<%= j render('form')%>");
+<% end %>

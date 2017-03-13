@@ -1,0 +1,8 @@
+<% if @contact.errors.any? %>
+      $("#new_contact").hide();
+      $("#contact_errors").html("<%= j render('form') %>");
+<% else %>
+  $("#new_contact").hide();
+  $("#contact").show();
+  $("#contact_detail").html("<b>Mobile : <%= @contact.mobile %></b><br/><b>Email : <%= @contact.email %></b>");
+<% end %>

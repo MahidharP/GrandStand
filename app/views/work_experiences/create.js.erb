@@ -1,0 +1,8 @@
+<% if @work_experience.errors.any? %>
+      $("#new_work_experience").hide();
+      $("#work_experience_errors").html("<%= j render('form') %>");
+<% else %>
+  $("#new_work_experience").hide();
+  $("#work_experience").show();
+  $("#work_experience_detail").html("<b>Name : <%= @work_experience.name %></b><br/><b>Description : <%= @work_experience.description %></b>");
+<% end %>

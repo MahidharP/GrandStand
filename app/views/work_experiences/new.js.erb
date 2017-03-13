@@ -1,0 +1,5 @@
+<% if @work_experience.errors.any? %>
+  $("work_experience_errors").html("<h2>Errors</h2>");
+<% else %>
+$("#work_experience").hide().after("<%= j render('form')%>");
+<% end %>

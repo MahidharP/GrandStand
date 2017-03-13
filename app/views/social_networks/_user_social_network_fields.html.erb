@@ -1,0 +1,7 @@
+<div class="nested-fields">
+  <%= f.collection_select :social_network_id, SocialNetwork.all, :id, :name, {prompt:"Select Your Network"} %>
+    <%= f.text_field :url%>
+    <%=f.hidden_field :user_id , value: current_user.id%>
+    <%= f.submit "Submit" %>
+    <%= link_to_remove_association "Remove", f, class: "from-button btn btn-danger" %>
+</div>

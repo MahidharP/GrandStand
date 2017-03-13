@@ -1,0 +1,8 @@
+<% if @project.errors.any? %>
+      $("#new_project").hide();
+      $("#project_errors").html("<%= j render('form') %>");
+<% else %>
+  $("#new_project").hide();
+  $("#project").show();
+  $("#project_detail").html("<b>Name : <%= @project.name %></b><br/><b>Description : <%= @project.description %></b>");
+<% end %>

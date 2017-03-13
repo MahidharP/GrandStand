@@ -1,0 +1,18 @@
+
+    <%= nested_form_for ProficiencySkill.new do |f| %>
+    <%= f.fields_for :user_proficiency_skills do |proficiency_skill| %>
+    <%= f.text_field :name %>
+    <%= proficiency_skill.radio_button :value, "1" %>
+    1
+    <%= proficiency_skill.radio_button :value, "2" %>
+    2
+    <%= proficiency_skill.radio_button :value, "3" %>
+    3
+    <%= proficiency_skill.radio_button :value, "4" %>
+    4
+    <%= proficiency_skill.radio_button :value, "5" %>
+    5
+    <%= proficiency_skill.link_to_remove "Remove this Proficiency" %>
+<% end %>
+<%= f.link_to_add "Add proficiency skill", :user_proficiency_skills %>
+<% end %>

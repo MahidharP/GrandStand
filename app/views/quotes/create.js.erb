@@ -1,0 +1,8 @@
+<% if @quote.errors.any? %>
+      $("#new_quote").hide();
+      $("#quote_errors").html("<%= j render('form') %>");
+<% else %>
+  $("#new_quote").hide();
+  $("#quote").show();
+  $("#quote_detail").html("<b>Name : <%= @quote.name %></b><br/><b>Quote By : <%= @quote.quote_by %></b>");
+<% end %>

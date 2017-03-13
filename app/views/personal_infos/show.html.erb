@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @personal_info.user_id %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @personal_info.profile %>
+</p>
+
+<p>
+  <strong>Designation:</strong>
+  <%= @personal_info.designation %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag(@personal_info.image.url) if @personal_info.image %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @personal_info.birthday %>
+</p>
+
+<p>
+  <strong>Nationality:</strong>
+  <%= @personal_info.nationality %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @personal_info.language %>
+</p>
+
+<%= link_to 'Edit', edit_personal_info_path(@personal_info) %> |
+<%= link_to 'Back', personal_infos_path %>

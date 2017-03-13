@@ -1,0 +1,270 @@
+<h2>
+    Welcome
+    <b>
+        <em>
+            <%= (current_user.username).capitalize %>
+        </em>
+    </b>
+</h2>
+
+<%#render "personal_info" %>
+
+<!-- <%# render 'education' %> -->
+
+<!-- <%# render 'project' %> -->
+
+<!-- <%# render 'portfolio' %> -->
+
+<!-- <%# render 'work_experience' %> -->
+
+<!-- <%# render "contact" %><br/> -->
+
+<!-- <%# link_to "Create_Proficiency Skills", new_proficiency_skill_path %><br/> -->
+
+<!-- <%# link_to "Create_Personal Skills", new_personal_skill_path %><br/> -->
+
+<!-- <%# link_to "Create_Interests", new_interest_path %><br/> -->
+
+<!-- <%# link_to "Create_Social Network", new_social_network_path %><br/> -->
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Wizard Form</title>
+    </head>
+
+    <body>
+        <div class="row">
+            <!-- begin col-12 -->
+            <div class="col-md-12">
+                <!-- begin panel -->
+                <div class="panel panel-inverse">
+                    <div class="panel-body">
+
+                        <div id="wizard">
+                            <ol>
+                                <li>
+                                    Personal Info
+                                    <small>Tell me About Yourself into little Breif</small>
+                                </li>
+                                <li>
+                                    Education Details
+                                    <small>Update Your Educational Details</small>
+                                </li>
+                                <li>
+                                    Projects &amp; Portfolio
+                                    <small>
+                                        Will be glad to see your projects &amp; portfolio
+                                    </small>
+                                </li>
+                                <li>
+                                    Work Experience
+                                    <small>
+                                        Tell us, where you've worked earlier
+                                    </small>
+                                </li>
+                                <li>
+                                    Contact
+                                    <small>
+                                        How do we Contact You.. ?
+                                    </small>
+                                </li>
+                                <li>
+                                    Skills &amp; Interests
+                                    <small>
+                                        What do you possess .. ?
+                                    </small>
+                                </li>
+                                <li>
+                                    Quotes
+                                    <small>
+                                        favorite
+                                    </small>
+                                </li>
+                                <li>
+                                    Completed
+                                    <small>Congratulations
+                                        <%= (@user.username).capitalize %>
+                                    </small>
+                                </li>
+                            </ol>
+                            <!-- begin wizard step-1 -->
+                            <div>
+                                <fieldset>
+                                    <legend class="pull-left width-full">Personal info</legend>
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <%= render 'personal_info' %>
+                                    </div>
+                                    <!-- end row -->
+                                </fieldset>
+                            </div>
+                            <!-- end wizard step-1 -->
+                            <!-- begin wizard step-2 -->
+                            <div>
+                                <fieldset>
+                                    <legend class="pull-left width-full">Education</legend>
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <%= render 'education' %>
+                                    </div>
+                                    <!-- end row -->
+                                </fieldset>
+                            </div>
+                            <!-- end wizard step-2 -->
+                            <!-- begin wizard step-3 -->
+                            <div>
+                                <fieldset>
+                                    <legend class="pull-left width-full">Project &amp; Portfolio</legend>
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <legend class="pull-left width-full">Project</legend>
+                                        <div class="col-md-12">
+                                            <%= render 'project' %>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <legend class="pull-left width-full">Portfolio</legend>
+                                            <%= render 'portfolio' %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                            </fieldset>
+
+                            <!-- end wizard step-3 -->
+                            <!-- begin wizard step-4 -->
+                            <div>
+                                <fieldset>
+                                    <legend class="pull-left width-full">Work Experience</legend>
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <%= render 'work_experience' %>
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                            </fieldset>
+
+                            <div>
+                                <fieldset>
+                                    <legend class="pull-left width-full">Contact</legend>
+                                    <!-- begin row -->
+                                    <div class="row">
+                                        <%= render 'contact' %>
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                            </fieldset>
+
+                            <div>
+                                <fieldset>
+                                    <legend class="pull-left width-full">Skills</legend>
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <legend class="pull-left width-full">Your Proficiency Skill</legend>
+                                                <%= nested_form_for current_user do |f| %>
+                                                <%= f.fields_for :user_proficiency_skills do |proficiency_skill| %>
+                                                <%= proficiency_skill.collection_select :proficiency_skill_id, ProficiencySkill.all, :id, :name, {prompt: "Select Your Proficiency Skill"} %>
+                                                <%= proficiency_skill.number_field :value, placeholder: "Add Your Value" %>
+                                                <%= proficiency_skill.link_to_remove "Remove this proficiency_skill" %>
+                                                <% end %>
+                                                <p><%= f.link_to_add "Add a proficiency_skill", :user_proficiency_skills %></p>
+                                                <%= f.submit "My ProficiencySkill" %>
+                                                <% end %>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <legend class="pull-left width-full">Your Personal Skill</legend>
+                                                <%= nested_form_for current_user do |f| %>
+                                                <%= f.fields_for :user_personal_skills do |personal_skill| %>
+                                                <%= personal_skill.collection_select :personal_skill_id, PersonalSkill.all, :id, :name, {prompt: "Select Your Personal Skill"} %>
+                                                <%= personal_skill.number_field :value, placeholder: "Add Your Value" %>
+                                                <%= personal_skill.link_to_remove "Remove this personal_skill" %>
+                                                <% end %>
+                                                <p><%= f.link_to_add "Add a personal_skill", :user_personal_skills %></p>
+                                                <%= f.submit "My PersonalSkill" %>
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <legend class="pull-left width-full">Your Interests</legend>
+                                                <%= fields_for :user_interests do |interest| %>
+                                                <%= interest.collection_check_boxes :interest_id, Interest.all, :id, :name do |b|%>
+                                                <%= b.check_box %>
+                                                <%= b.label %>
+                                                <% end %></br>
+                                            <%= interest.submit "Add My Interest" %>
+                                            <% end %>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <legend class="pull-left width-full">Your Networks</legend>
+                                            <%= nested_form_for current_user do |f| %>
+                                            <%= f.fields_for :user_social_networks do |social_network| %>
+                                            <%= social_network.collection_select :social_network_id, SocialNetwork.all, :id, :name, {prompt: "Your Social Media"} %>
+                                            <%= social_network.text_field :url, placeholder: "Add Your URL" %>
+                                            <%= social_network.link_to_remove "Remove this Socail Network" %>
+                                            <% end %>
+                                            <p><%= f.link_to_add "Add a social_network", :user_social_networks %></p>
+                                            <%= f.submit "My SocailNetwork" %>
+                                            <% end %><br/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </fieldset>
+
+                        <div>
+                            <fieldset>
+                                <legend class="pull-left width-full">Quote</legend>
+                                <!-- begin row -->
+                                <div class="row">
+                                    <%= render 'quote' %>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                        </fieldset>
+
+                        <div>
+                            <div class="jumbotron m-b-0 text-center">
+                                <h1>Thank You,
+                                    <em>
+                                        <%= (@user.username).capitalize %>
+                                    </em>
+                                </h1>
+                                <p>Your details has been successfully saved.
+                                </p>
+                                <p>
+                                    <a class="btn btn-success btn-lg" role="button">
+                                        =>
+                                        <%= link_to "Check Your Resume", "resumes/#{@user.username}" %></a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- end wizard step-4 -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- end panel -->
+        </div>
+        <!-- end
+                                            col-12 -->
+    </div>
+    <script>
+        $(document).ready(function () {
+            App.init();
+            FormWizard.init();
+        });
+    </script>
+</body>
+</html>
+<script>
+$(document).ready(function () {
+    App.init();
+    FormWizard.init();
+});
+</script>

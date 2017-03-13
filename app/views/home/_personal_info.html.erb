@@ -1,0 +1,44 @@
+<div id="personal_info_errors"></div>
+
+<div id="personal_info_detail"></div>
+
+<div id="personal_info_detail_<%= @personal_info.try(:id) %>">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+        <strong>Profile:</strong>
+        <%= @user.personal_info.try(:profile) %>
+    </p>
+
+    <p>
+        <strong>Designation:</strong>
+        <%= @user.personal_info.try(:designation) %>
+    </p>
+
+    <p>
+        <strong>Image:</strong>
+        <%= @user.personal_info.try(:image) %>
+    </p>
+
+    <p>
+        <strong>Birthday:</strong>
+        <%= @user.personal_info.try(:birthday) %>
+    </p>
+
+    <p>
+        <strong>Nationality:</strong>
+        <%= @user.personal_info.try(:nationality) %>
+    </p>
+
+    <p>
+        <strong>Language:</strong>
+        <%= @user.personal_info.try(:language) %>
+    </p>
+    <% if !@user.personal_info.nil? %>
+    <%= link_to "remove", personal_info_path(@user.personal_info.id), method: :delete, data: {confirm: "Are you sure?"}, id: "personal_info_#{@user.personal_info.id}", remote: true %>
+    <% end %>
+</div>
+
+<% if @user.personal_info.nil? %>
+<%= link_to "Create Personal Info", new_personal_info_path, id: "personal_info", remote: true  %><br/>
+<% end %>

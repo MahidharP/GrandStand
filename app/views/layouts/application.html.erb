@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grandstand</title>
+        <%= stylesheet_link_tag    'application' %>
+        <%= javascript_include_tag 'application'%>
+
+        <%= csrf_meta_tags %>
+
+        <!-- For date picker  -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <!-- date picker ends here  -->
+
+        <!-- ================== BEGIN BASE CSS STYLE ================== -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="../css/jquery-ui.min.css" rel="stylesheet"/>
+        <link href="../css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="../css/animate.min.css" rel="stylesheet"/>
+        <link href="../css/style.min.css" rel="stylesheet"/>
+        <link href="../css/style-responsive.min.css" rel="stylesheet"/>
+        <link href="../css/default.css" rel="stylesheet" id="theme"/>
+        <!-- ================== END BASE CSS STYLE ================== -->
+
+        <!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+        <link href="../css/bwizard.min.css" rel="stylesheet"/>
+
+        <!-- FOR BOOTSTRAP CDN CSS  -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- BOOTSTRAP CDN CSS ENDS  -->
+
+        <!-- ================== END PAGE LEVEL STYLE ================== -->
+
+        <!-- ================== BEGIN BASE JS ================== -->
+        <!-- <script src="js/pace.min.js"></script> -->
+        <!-- ================== END BASE JS ================== -->
+
+        <!-- ================== BEGIN BASE JS ================== -->
+        <script src="../js/jquery-1.9.1.min.js"></script>
+        <script src="../js/jquery-migrate-1.1.0.min.js"></script>
+        <script src="../js/jquery-ui.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <!--[if lt IE 9]> <script src="assets/crossbrowserjs/html5shiv.js"></script> <script src="assets/crossbrowserjs/respond.min.js"></script> <script src="assets/crossbrowserjs/excanvas.min.js"></script> <![endif]-->
+        <script src="../js/jquery.slimscroll.min.js"></script>
+        <script src="../js/jquery.cookie.js"></script>
+        <!-- ================== END BASE JS ================== -->
+
+        <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+        <script src="../js/bwizard.js"></script>
+        <script src="../js/form-wizards.demo.min.js"></script>
+        <script src="../js/apps.min.js"></script>
+
+        <!-- ================== END PAGE LEVEL JS ================== -->
+
+    </head>
+    <body>
+        <% if user_signed_in? %>
+        <%= current_user.username %>
+        |
+        <%= link_to "LogOut", destroy_user_session_path, method: :delete %>
+        <% end %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+
+    </body>
+</html>

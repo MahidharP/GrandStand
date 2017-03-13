@@ -1,0 +1,2 @@
+module ProficiencySkillsHelper
+end

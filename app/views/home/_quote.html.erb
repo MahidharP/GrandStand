@@ -1,0 +1,24 @@
+<div id="quote_errors"></div>
+
+<div id="quote_detail"></div>
+
+<% current_user.quotes.each do |quote| %>
+
+<div id="quote_detail_<%= quote.id %>">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+        <strong>Name:</strong>
+        <%= quote.name %>
+    </p>
+
+    <p>
+        <strong>Quote By:</strong>
+        <%= quote.quote_by %>
+    </p>
+
+    <%= link_to "remove", quote_path(quote), method: :delete, data: {confirm: "Are you sure?"}, id: "quote_#{quote.id}", remote: true %>
+</div>
+<% end %>
+
+<%= link_to "Add Quote", new_quote_path, id: "quote", remote: true  %><br/>

@@ -1,0 +1,33 @@
+<div id="portfolio_errors"></div>
+
+<div id="portfolio_detail"></div>
+
+<% current_user.portfolios.each do |portfolio| %>
+
+<div id="portfolio_detail_<%= portfolio.id %>">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+        <strong>Name:</strong>
+        <%= portfolio.title %>
+    </p>
+
+    <p>
+        <strong>Description:</strong>
+        <%= portfolio.description %>
+    </p>
+
+    <p>
+        <strong>image:</strong>
+        <%= portfolio.image %>
+    </p>
+    <p>
+        <strong>Url:</strong>
+        <%= portfolio.url %>
+    </p>
+
+    <%= link_to "remove", portfolio_path(portfolio), method: :delete, data: {confirm: "Are you sure?"}, id: "portfolio_#{portfolio.id}", remote: true %>
+</div>
+<% end %>
+
+<%= link_to "Create Portfolio", new_portfolio_path, id: "portfolio", remote: true  %><br/>

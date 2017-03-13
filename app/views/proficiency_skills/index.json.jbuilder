@@ -1,0 +1,1 @@
+json.array! @proficiency_skills, partial: 'proficiency_skills/proficiency_skill', as: :proficiency_skill

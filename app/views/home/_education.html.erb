@@ -1,0 +1,36 @@
+<div id="education_errors"></div>
+
+<div id="education_detail"></div>
+<% current_user.educations.each do |education| %>
+<div id="education_detail_<%= education.id %>">
+    <p id="notice"><%= notice %></p>
+    <p>
+        <strong>Name:</strong>
+        <%= education.name %>
+    </p>
+
+    <p>
+        <strong>College:</strong>
+        <%= education.college %>
+    </p>
+
+    <p>
+        <strong>Start date:</strong>
+        <%= education.start_date %>
+    </p>
+
+    <p>
+        <strong>End date:</strong>
+        <%= education.end_date %>
+    </p>
+
+    <p>
+      <strong>Document:</strong>
+      <%= education.document_path %>
+    </p>
+
+    <%= link_to "remove", education_path(education), method: :delete, data: {confirm: "Are you sure?"}, id: "education_#{education.id}", remote: true %>
+</div>
+<% end %>
+
+<%= link_to "Create Education", new_education_path, id: "education", remote: true %><br/>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>DCT -
+            <%= @user.username %>'s_Resume</title>
+        <meta name="description" content="SiRA - Responsive Personal Business Card Template">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Awesomefont -->
+        <link rel="stylesheet" href="../../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!-- General CSS Settings -->
+        <link rel="stylesheet" href="../../css/general_style.css">
+        <!-- Main Style of the template -->
+        <link rel="stylesheet" href="../../css/main_style_orange.css" title="main">
+        <!-- Reseters -->
+        <link rel="stylesheet" href="../../css/reset_style.css">
+        <!-- Fav Icon -->
+        <!-- <link rel="shortcut icon" href="favicon.ico"> -->
+    </head>
+    <body>
+        <!-- Wrapper -->
+        <div class="lx-wrapper">
+
+            <!-- Loader -->
+            <div class="lx-loader">
+                <img src="../../images/dashinfinity.gif" alt="Loading"/>
+            </div>
+            <!-- End Loader -->
+
+            <!-- Main Menu -->
+            <div class="lx-g1-f">
+                <div class="lx-main-menu">
+                    <i class="fa fa-bars"></i>
+                    <ul>
+                        <li>
+                            <a href="javascript:;" class="active" data-title="lx-home">HOME</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-title="lx-about">WHO I AM</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-title="lx-skills">WHAT I DO</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-title="lx-experiences">EXPERIENCES</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-title="lx-studies">STUDIES</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-title="lx-projects">PROJECTS</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" data-title="lx-contact">CONTACT</a>
+                        </li>
+
+                    </ul>
+                    <div class="lx-main-menu-buttons">
+                        <a href="#">Hire Me</a>
+                        <a href="#">Download Resume</a>
+                    </div>
+                    <p>&copy; DCT copyrights 2016.</p>
+                </div>
+            </div>
+            <!-- End Main Menu -->
+
+            <!-- Main Content -->
+            <div class="lx-g3-f lx-all-blocs">
+
+                <div class="lx-g1-f">
+                    <!-- Personal Picture -->
+                    <div class="lx-personal-info-img">
+                        <%= image_tag(@user.personal_info.image.url) if @user.personal_info.image %>
+                    </div>
+                    <!-- End Personal Picture -->
+                </div>
+
+                <div class="lx-g1-f">
+                    <!-- Personal Info -->
+                    <div class="lx-personal-info lx-home lx-blocs">
+                        <h1><%= @user.username %></h1>
+                        <em><%= @user.personal_info.try(:designation) %></em>
+                        <p><%= @user.personal_info.try(:profile) %></p>
+                        <ul>
+                            <li>
+                                <a href="<%= @user.user_social_networks.find_by_social_network_id(1).url %>">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<%= @user.user_social_networks.find_by_social_network_id(4).url %>">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<%= @user.user_social_networks.find_by_social_network_id(3).url %>">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<%= @user.user_social_networks.find_by_social_network_id(2).url %>">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<%= @user.user_social_networks.find_by_social_network_id(5).url %>">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li class="lx-clear-fix"></li>
+                        </ul>
+                    </div>
+                    <!-- End Personal Info -->
+                </div>
+                <div class="lx-clear-fix"></div>
+
+            </div>
+
+            <div class="lx-g3-2-f lx-all-blocs">
+                <div class="lx-g1-f">
+
+                    <!-- My About -->
+                    <div class="lx-about lx-blocs">
+                        <h3>
+                            <span>Who I am</span>
+                        </h3>
+                        <div class="lx-quote">
+                            <h4>Favourate Quote</h4>
+                            <%= render 'quote' %>
+                        </div>
+                        <p>
+                            <b>Name
+                            </b>:
+                            <%= @user.username %></p>
+                        <p>
+                            <b>born
+                            </b>:
+                            <%= @user.personal_info.try(:birthday).strftime("%Y") %></p>
+                        <p>
+                            <b>Citizenship
+                            </b>:
+                            <%= @user.personal_info.try(:nationality) %></p>
+                        <p>
+                            <b>Job
+                            </b>:
+                            <%= @user.personal_info.try(:designation) %>
+                        </p>
+                        <p>
+                            <b>Language
+                            </b>:
+                            <%= @user.personal_info.try(:language) %></p>
+
+                        <h4>I’M
+                            <%= @user.personal_info.try(:designation) %></h4>
+                        <p><%= @user.personal_info.try(:profile) %></p>
+
+                    </div>
+                    <!-- End My About -->
+
+                    <!-- My Skills -->
+                    <div class="lx-skills lx-blocs">
+                        <!-- Boxs -->
+                        <h3>
+                            <span>What I do</span>
+                        </h3>
+                        <div class="lx-g3-f">
+                            <div class="lx-box">
+                                <i class="fa fa-laptop"></i>
+                                <h4>WEB DESIGN & UI</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, ubique maluisset vel te, his dico vituperata.</p>
+                            </div>
+                        </div>
+                        <div class="lx-g3-f">
+                            <div class="lx-box">
+                                <i class="fa fa-object-group"></i>
+                                <h4>WIREFRAMES</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, ubique maluisset vel te, his dico vituperata.</p>
+                            </div>
+                        </div>
+                        <div class="lx-g3-f">
+                            <div class="lx-box">
+                                <i class="fa fa-paint-brush"></i>
+                                <h4>VISUAL DESIGN</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, ubique maluisset vel te, his dico vituperata.</p>
+                            </div>
+                        </div>
+                        <div class="lx-g3-f">
+                            <div class="lx-box lx-mb-0">
+                                <i class="fa fa-mobile"></i>
+                                <h4>MOBILE APP DESIGN</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, ubique maluisset vel te, his dico vituperata.</p>
+                            </div>
+                        </div>
+                        <div class="lx-g3-f">
+                            <div class="lx-box lx-mb-0">
+                                <i class="fa fa-first-order"></i>
+                                <h4>LOGO DESIGN</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, ubique maluisset vel te, his dico vituperata.</p>
+                            </div>
+                        </div>
+                        <div class="lx-g3-f">
+                            <div class="lx-box lx-mb-0 lx-mb-00">
+                                <i class="fa fa-clone"></i>
+                                <h4>PRINT DESIGN</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, ubique maluisset vel te, his dico vituperata.</p>
+                            </div>
+                        </div>
+                        <div class="lx-clear-fix"></div>
+                        <!-- End Boxs -->
+
+                        <div class="lx-g2-f lx-pr-30">
+                            <!-- Bars -->
+                            <h4>MY PROGRAMMING SKILLS</h4>
+                            <div class="lx-bars-chart">
+                                <% @user.user_proficiency_skills.each do |proficiency_skill| %>
+                                <div class="lx-bar" data-max="<%= proficiency_skill.value %>">
+                                    <p><%= proficiency_skill.proficiency_skill.name %></p>
+                                    <div class="lx-bar-counter">0</div>
+                                    <div class="lx-bar-bg">
+                                        <div class="lx-bar-fill"></div>
+                                    </div>
+                                </div>
+
+                                <% end %>
+                            </div>
+                            <!-- End Bars -->
+                        </div>
+                        <div class="lx-g2-f lx-pl-30">
+                            <!-- Languages -->
+                            <h4>MY PERSONAL SKILLS</h4>
+                            <% @user.user_personal_skills.each do |personal_skill| %>
+                            <div class="lx-bars-chart">
+                                <div class="lx-bar" data-max="<%= personal_skill.value %>">
+                                    <p><%= personal_skill.personal_skill.name %></p>
+                                    <div class="lx-bar-counter">0</div>
+                                    <div class="lx-bar-bg">
+                                        <div class="lx-bar-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% end %>
+                            <h4>MY INTERESTS</h4>
+                            <ul>
+                                <% @user.user_interests.each do |interest| %>
+                                <ol>
+                                    <%= interest.interest.try(:name) %>
+                                </ol>
+                                <% end %>
+                            </ul>
+                            <!-- End Languages -->
+                        </div>
+                        <div class="lx-clear-fix"></div>
+                    </div>
+                    <!-- End My Skills -->
+
+                    <!-- Experiences -->
+                    <div class="lx-experiences lx-blocs">
+                        <h3>
+                            <span>Experiences</span>
+                        </h3>
+                        <% @user.work_experiences.each do |work_experience| %>
+                        <ul>
+                            <li>
+                                <span><%= work_experience.start_date.strftime("%Y") %></span>
+                                <h4><%= work_experience.name %></h4>
+                                <p><%= work_experience.description %></p>
+                            </li>
+                        </ul>
+                        <% end %>
+                    </div>
+                    <!-- End Experiences -->
+
+                    <!-- Studeis -->
+                    <div class="lx-studies lx-blocs">
+                        <h3>
+                            <span>Education Details</span>
+                        </h3>
+                        <ul>
+                            <% @user.educations.order(start_date: :desc).each do |education| %>
+                            <li>
+                                <span><%= education.start_date.strftime("%Y") %>
+                                    -
+                                    <%= education.end_date.strftime("%Y") %></span>
+                                <h4><%= education.name %></h4>
+                                <p><%= education.college %>
+                                </p>
+                                <%= link_to "Download Document", "#{education.document_path}", target: "_blank", class: "btn-btn-info btn-sm pull-right"%>
+                            </li>
+                            <% end %>
+
+                        </ul>
+                    </div>
+                    <!-- End Studeis -->
+
+                    <!-- My Projects -->
+                    <div class="lx-projects lx-blocs">
+                        <h3>
+                            <span>My projects</span>
+                        </h3>
+                        <!-- Portfolio -->
+                        <% @user.projects.each do |project| %>
+                        <div class="lx-g2-f lx-pr-30">
+                            <div class="lx-portfolio">
+                                <div class="lx-portfolio-img">
+                                    <img src="http://placehold.it/1650x1100" alt="image title here"/>
+                                    <a href="javascript:;">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="lx-portfolio-details">
+                                    <div class="lx-portfolio-info">
+                                        <h4><%= project.try(:name) %></h4>
+                                        <p><%= project.try(:description) %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% end %>
+                        <div class="lx-clear-fix"></div>
+                        <!-- End Portfolio -->
+                    </div>
+                    <!-- End Projects -->
+
+                    <!-- Contact -->
+                    <div class="lx-contact lx-blocs">
+                        <h3>
+                            <span>Contact</span>
+                        </h3>
+                        <% @user.contacts.each do |contact| %>
+                        <div class="lx-g3-f">
+                            <div class="lx-box-contact">
+                                <i class="fa fa-mobile"></i>
+                                <h4>Call me</h4>
+                                <p><%= contact.try(:mobile) %></p>
+                            </div>
+                        </div>
+                        <div class="lx-g3-f">
+                            <div class="lx-box-contact">
+                                <i class="fa fa-envelope-o"></i>
+                                <h4>Send me an email</h4>
+                                <p><%= contact.try(:email) %></p>
+                            </div>
+                        </div>
+                        <div class="lx-g3-f">
+                            <div class="lx-box-contact">
+                                <i class="fa fa-map-marker"></i>
+                                <h4>Pay me a visit</h4>
+                                <p><%= contact.try(:address) %></p>
+                            </div>
+                        </div>
+                        <% end %>
+                        <div class="lx-clear-fix"></div>
+
+                        <h4>LEAVE ME A MESSAGE</h4>
+                        <p>You can ask me about anything here, just type your name and e-mail and I'll answer you as soon as possible.</p>
+                        <%= form_for Enquiry.new do |f| %>
+                        <div class="lx-contact-field">
+                            <%= f.text_field :name, placeholder: "Your fullname here ... " %>
+
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="lx-contact-field">
+                            <%= f.text_field :email, placeholder: "Your e-mail here ... " %>
+                            <!-- <input type="text" name="email" placeholder="Your e-mail here ..."/> -->
+                            <i class="fa fa-envelope-o"></i>
+                        </div>
+                        <div class="lx-contact-field">
+                            <%= f.text_area :message, placeholder: "Your message here ... " %>
+                            <!-- <textarea name="message" placeholder="Your message here ..."></textarea> -->
+                            <i class="fa fa-comment"></i>
+                        </div>
+                        <%= f.button :submit, value: "GET IN TOUCH" %>
+                        <!-- <input type="button" name="submit" value="GET IN TOUCH"/> -->
+                        <% end %>
+
+                        <div class="lx-clear-fix"></div>
+                    </div>
+                    <!-- End Contact -->
+                </div>
+            </div>
+            <!-- End Main Content -->
+
+            <!-- Popup -->
+            <div class="lx-popup">
+                <div class="lx-popup-inside">
+                    <a href="javascript:;">
+                        <i class="fa fa-remove"></i>
+                    </a>
+                    <a href="javascript:;">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="javascript:;">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                    <div class="lx-popup-content">
+                        <div class="lx-popup-image">
+                            <img src="#" alt="image title here"/>
+                        </div>
+                        <div class="lx-popup-details">
+                            <ul>
+                                <li>
+                                    <span></span>
+                                </li>
+                                <li>
+                                    <span></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Popup -->
+
+            <div class="lx-clear-fix"></div>
+        </div>
+        <!-- JQuery -->
+        <script src="../../js/jquery-1.12.4.min.js"></script>
+        <!-- Popup Script -->
+        <script src="../../js/jquery.popup.js"></script>
+        <!-- Main Script -->
+        <script src="../../js/script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+<%= form_for(@work_experience, remote: true) do |f| %>
+<% if @work_experience.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(@work_experience.errors.count, "error") %>
+        prohibited this work_experience from being saved:</h2>
+
+    <ul>
+        <% @work_experience.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="col-md-6">
+    <div class="form-group">
+        <%= f.label :name %><br>
+        <%= f.text_field :name, class: "form-control" %>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="form-group">
+        <%= f.label :company %><br>
+        <%= f.text_field :company, class: "form-control" %>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="form-group">
+        <%= f.label :description %><br>
+        <%= f.text_area :description, class: "form-control" %>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var dateFormat = "yy-mm-dd",
+            from = $("#from").datepicker({defaultDate: "+1w", changeMonth: true, changeYear: true, numberOfMonths: 1, dateFormat}).on("change", function () {
+                to.datepicker("option", "minDate", getDate(this));
+            }),
+            to = $("#to").datepicker({defaultDate: "+1w", changeMonth: true, changeYear: true, numberOfMonths: 1, dateFormat}).on("change", function () {
+                from.datepicker("option", "maxDate", getDate(this));
+            });
+
+        function getDate(element) {
+            var date;
+            try {
+                date = $.datepicker.parseDate(dateFormat, element.value);
+            } catch (error) {
+                date = null;
+            }
+
+            return date;
+        }
+    });
+</script>
+
+<div class="col-md-6">
+    <div class="form-group">
+        <%= f.label :start_date %><br>
+        <%= f.text_field :start_date, class: "form-control", id: "from" %>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="form-group">
+        <%= f.label :end_date %><br>
+        <%= f.text_field :end_date, class: "form-control", id: "to" %>
+    </div>
+</div>
+
+<div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>

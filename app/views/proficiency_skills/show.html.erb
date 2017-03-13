@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @proficiency_skill.name %>
+</p>
+
+<p>
+  <strong>Value: </strong>
+  <% @proficiency_skill.user_proficiency_skills.each do |proficiency_skill| %>
+  <%= proficiency_skill.value %>
+  <% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_proficiency_skill_path(@proficiency_skill) %> |
+<%= link_to 'Back', proficiency_skills_path %>

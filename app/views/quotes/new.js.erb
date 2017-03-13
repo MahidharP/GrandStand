@@ -1,0 +1,5 @@
+<% if @quote.errors.any? %>
+  $("quote_errors").html("<h2>Errors</h2>");
+<% else %>
+$("#quote").hide().after("<%= j render('form')%>");
+<% end %>

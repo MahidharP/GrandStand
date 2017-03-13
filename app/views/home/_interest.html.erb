@@ -1,0 +1,16 @@
+<div id="interest_errors"></div>
+
+<div id="interest_detail"></div>
+<% current_user.interests.each do |interest| %>
+<div id="interest_detail_<%= interest.id %>">
+    <p id="notice"><%= notice %></p>
+    <p>
+        <strong>Name:</strong>
+        <%= interest.name %>
+    </p>
+
+    <%= link_to "remove", interest_path(interest), method: :delete, data: {confirm: "Are you sure?"}, id: "interest_#{interest.id}", remote: true %>
+</div>
+<% end %>
+
+<%= link_to "My Interest", new_interest_path, id: "interest", remote: true %><br/>

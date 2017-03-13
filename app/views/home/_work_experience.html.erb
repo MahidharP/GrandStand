@@ -1,0 +1,38 @@
+<div id="work_experience_errors"></div>
+
+<div id="work_experience_detail"></div>
+
+<% current_user.work_experiences.each do |work_experience| %>
+
+<div id="work_experience_detail_<%= work_experience.id %>">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+        <strong>Name:</strong>
+        <%= work_experience.name %>
+    </p>
+
+    <p>
+        <strong>Description:</strong>
+        <%= work_experience.description %>
+    </p>
+
+    <p>
+        <strong>Company:</strong>
+        <%= work_experience.company %>
+    </p>
+
+    <p>
+        <strong>Start date:</strong>
+        <%= work_experience.start_date %>
+    </p>
+
+    <p>
+        <strong>End date:</strong>
+        <%= work_experience.end_date %>
+    </p>
+    <%= link_to "remove", work_experience_path(work_experience), method: :delete, data: {confirm: "Are you sure?"}, id: "work_experience_#{work_experience.id}", remote: true %>
+</div>
+<% end %>
+
+<%= link_to "Create Work Experience", new_work_experience_path, id: "work_experience", remote: true  %><br/>

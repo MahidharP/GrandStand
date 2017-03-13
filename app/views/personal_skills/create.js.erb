@@ -1,0 +1,8 @@
+<% if @personal_skill.errors.any? %>
+      $("#new_personal_skill").hide();
+      $("#personal_skill_errors").html("<%= j render('form') %>");
+<% else %>
+  $("#new_personal_skill").hide();
+  $("#personal_skill").show();
+  $("#personal_skill_detail").html("<b>Name : <%= @personal_skill.name %></b>");
+<% end %>
