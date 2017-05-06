@@ -17,5 +17,4 @@
 /tmp
 
 # Ignore application configuration
-/config/initializers/carrierwave.rb
 /config/application.yml
