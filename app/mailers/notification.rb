@@ -5,6 +5,6 @@ class Notification < ActionMailer::Base
         @user = user
         @enquiry = enquiry
 
-        mail to: @user.email.to_s, bcc: 'mahi@dctacademy.com', subject: "#{@enquiry.name}, would want to get in Touch with you, Below follows the details!"
+        mail to: @user.email.to_s, bcc: 'mahidharreddy10@gmail.com', subject: "#{@enquiry.name}, would want to get in Touch with you, Below follows the details!"
     end
 end
